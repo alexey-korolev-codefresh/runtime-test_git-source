@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  creationTimestamp: null
+  name: codefresh-delivery-pipelines
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: push-github-eventsource-svc
+            port:
+              number: 13000
+        path: /webhooks/push-github/
+        pathType: ImplementationSpecific
+status:
+  loadBalancer: {}
